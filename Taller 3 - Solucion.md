@@ -78,7 +78,7 @@ Ejecute la aplicación e incluya un pantallazo del código en ejecución y la ap
 <br>
 
 **R/**
-![Imagen Ejecución](image/Taller3-Solucion/3.png)
+![Imagen Ejecución](image/Taller3-Solucion/1_3.png)
 
 ---
 
@@ -110,11 +110,11 @@ Se crea en una variable un objeto que posteriormente será agregado a la aplicac
 - `color`: El nombre de la columna del DataFrame recibido en `data_frame` cuyos valores serán usados para asignar colores a las marcas. Generalmente se usa para variables categóricas que distingan los datos.
 - `barmode`: Un `str` que puede recibir los valores `'relative'`, `'overlay'`, `'group'`.
   - `'relative'`: las barras para las categorías son apiladas o _stacked_ una encima de la otra.  
-    ![Relative](image/Taller3-Solucion/4_Relative.png)
+    ![Relative](image/Taller3-Solucion/1_4_Relative.png)
   - `'overlay'`: las barras son dibujadas una encima de la otra, se solapan.
-    ![Overlay](image/Taller3-Solucion/4_Overlay.png)
+    ![Overlay](image/Taller3-Solucion/1_4_Overlay.png)
   - `'group'`: las barras son dibujadas al lado de la otra para distinguir las categorías.
-    ![Group](image/Taller3-Solucion/4_Group.png)
+    ![Group](image/Taller3-Solucion/1_4_Group.png)
 
 ---
 
@@ -161,7 +161,7 @@ Se crea en una variable un objeto que posteriormente será agregado a la aplicac
 
   Un gráfico que representa este código se meustra a continuación
 
-  ![Contenedor](image/Taller3-Solucion/5_Contenedor.png)
+  ![Contenedor](image/Taller3-Solucion/1_5_Contenedor.png)
 
 ---
 
@@ -187,7 +187,7 @@ df = pd.DataFrame(
 
 Y la aplicación con los nuevos datos es de la siguiente forma:
 
-![Nuevo Dashboard](image/Taller3-Solucion/6_Nuevo.png)
+![Nuevo Dashboard](image/Taller3-Solucion/1_6_Nuevo.png)
 
 ---
 
