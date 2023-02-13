@@ -185,6 +185,18 @@ df = pd.DataFrame(
 )
 ```
 
+| Votos |     Candidato      | Departamento |
+| :---: | :----------------: | :----------: |
+|   5   | Federico Gutierrez | Cundinamarca |
+|   8   |   Gustavo Petro    | Cundinamarca |
+|   4   | Rodolfo Hernández  | Cundinamarca |
+|   9   | Federico Gutierrez |     Meta     |
+|   2   |   Gustavo Petro    |     Meta     |
+|   3   | Rodolfo Hernández  |     Meta     |
+|   4   | Federico Gutierrez |   Guaviare   |
+|   9   |   Gustavo Petro    |   Guaviare   |
+|   5   | Rodolfo Hernández  |   Guaviare   |
+
 Y la aplicación con los nuevos datos es de la siguiente forma:
 
 ![Nuevo Dashboard](image/Taller3-Solucion/1_6_Nuevo.png)
