@@ -188,7 +188,7 @@ df = pd.DataFrame(
 | Votos |     Candidato      | Departamento |
 | :---: | :----------------: | :----------: |
 |   5   | Federico Gutierrez | Cundinamarca |
-|   8   |   Gustavo Petro    | Cundinamarca |
+|   9   |   Gustavo Petro    | Cundinamarca |
 |   4   | Rodolfo Hernández  | Cundinamarca |
 |   9   | Federico Gutierrez |     Meta     |
 |   2   |   Gustavo Petro    |     Meta     |
