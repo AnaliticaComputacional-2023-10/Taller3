@@ -13,7 +13,13 @@
 
 ---
 
-## 1.
+---
+
+## Un primer tablero en Dash
+
+---
+
+### 1.
 
 ¿Cómo se crea el objeto `app` en _Dash_?
 
@@ -34,7 +40,7 @@ app = dash.Dash(name=__name__, external_stylesheets=['url'])
 
 ---
 
-## 2.
+### 2.
 
 Describa el conjunto de datos del Dataframe
 
@@ -59,11 +65,11 @@ df = pd.DataFrame({
 |   Leve   |   4   |  Negativo   |
 |   Alta   |   5   |  Negativo   |
 
-Los datos corresponden a un registro con tres columnas, Fiebre, Casos y Diagnóstico. Corresponde a una hoja de diagnóstico donde dependiendo si un paciente tiene fiebre y los casos que hay, se le da al paciente un diagnóstico Positivo o Negativo frente a cierta enfermedad.
+Los datos corresponden a un registro con tres columnas, Fiebre, Casos y Diagnóstico. Estos datos muestran el número de casos Positivos o Negativos según los síntomas de fiebre presentados por los pacientes.
 
 ---
 
-## 3.
+### 3.
 
 Ejecute la aplicación e incluya un pantallazo del código en ejecución y la aplicación siendo ejecutada en el navegador
 
@@ -74,7 +80,7 @@ Ejecute la aplicación e incluya un pantallazo del código en ejecución y la ap
 
 ---
 
-## 4.
+### 4.
 
 Considerando la aplicación describa qué hace el comando
 
@@ -104,18 +110,71 @@ Se crea en una variable un objeto que posteriormente será agregado a la aplicac
 
 ---
 
-## 5.
+### 5.
 
-Describa que hace el siguiente código
+- Describa que hace el siguiente código
 
-```py
-dcc.Graph(
-   id='example-graph',
-   figure=fig
-),
-```
+  ```py
+  dcc.Graph(
+     id='example-graph',
+     figure=fig
+  ),
+  ```
 
-Esto permite añadir a la aplicación la gráfica que creamos anteriormente.
+   <br>
 
-- `id`: este parámetro permite identificar de forma particular este elemento, en caso de que sea necesario añadirle estilo personalizado o ser referenciado por otro objeto del HTML.
-- `figure`: es en este parámetro donde se le agrega la variable en la cual creamos la figura a mostrar.
+  **R/**
+
+  Esto permite añadir a la aplicación la gráfica que creamos anteriormente.
+
+  - `id`: este parámetro permite identificar de forma particular este elemento, en caso de que sea necesario añadirle estilo personalizado o ser referenciado por otro objeto del HTML.
+  - `figure`: este parámetro permite agreagar la variable en la que se creó la figura o gráfico a mostrar.
+
+  <br>
+
+- Describa que hace el siguiente código
+
+  ```py
+  html.Div(
+     className="Columnas",
+     children=[
+        html.Ul(id='my-list', children=[html.Li(i) for i in df.columns])
+     ],
+  )
+  ```
+
+  <br>
+
+  **R/**
+
+  Esto permite añadir una lista desordenada `Ul` la cual tiene como subcontenido los nombres de las columnas del DataFrame creados como elementos de la lista `Li`. Toda esta lista se encuentra dentro de un contenedor `Div` que permite agrupar los elementos html.
+
+  - `children`: en este parámetro se ubican todos los subelementos del objeto siendo creado
+
+  Un gráfico que representa este código se meustra a continuación
+
+  ![Contenedor](image/Taller3-Solucion/5_Contenedor.png)
+
+---
+
+### 6.
+
+Realice cambios en los datos para obtener una nueva versión del tablero con datos de su elección.
+
+<br>
+
+**R/**
+
+![Nuevo Dashboard](image/Taller3-Solucion/6_Nuevo.png)
+
+---
+
+---
+
+## Callbacks
+
+---
+
+### 1.
+
+https://dash.plotly.com/basic-callbacks
