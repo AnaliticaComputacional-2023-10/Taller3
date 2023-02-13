@@ -16,7 +16,7 @@ import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(name=__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 # en este primer ejemplo usamos unos datos de prueba que creamos directamente
@@ -27,7 +27,8 @@ df = pd.DataFrame({
     "Diagnóstico": ["Positivo", "Positivo", "Positivo", "Negativo", "Negativo", "Negativo"]
 })
 
-fig = px.bar(df, x="Fiebre", y="Casos", color="Diagnóstico", barmode="group")
+fig = px.bar(df, x="Fiebre", y="Casos",
+             color="Diagnóstico", barmode="group")
 
 app.layout = html.Div(children=[
     html.H1(children='Mi primer tablero en Dash'),
@@ -53,4 +54,4 @@ app.layout = html.Div(children=[
 )
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run(debug=True)
