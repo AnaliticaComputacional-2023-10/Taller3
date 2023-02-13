@@ -15,7 +15,7 @@ app.layout = html.Div(
         html.Div(["Input: ",
                   dcc.Input(id='my-input', value='valor inicial', type='text')]),
         html.Br(),
-        html.Div(id='my-output'),
+        html.Div(id='my-output')
     ]
 )
 
@@ -25,7 +25,7 @@ app.layout = html.Div(
     [Input(component_id='my-input', component_property='value')]
 )
 def update_output_div(input_value):
-    return 'Output: {}'.format(input_value)
+    return f'Output: {input_value}'
 
 
 if __name__ == '__main__':
