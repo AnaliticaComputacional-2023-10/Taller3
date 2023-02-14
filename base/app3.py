@@ -44,7 +44,7 @@ def update_figure(selected_year):
                          "lifeExp": "Life Expectancy",
                          "continent": "Continent"
                      },
-                     title="Life expectancy vs. GDP per cápita across the years")
+                     title=f"Life expectancy vs. GDP per cápita across the years {selected_year}")
 
     fig.update_layout(transition_duration=500)
 

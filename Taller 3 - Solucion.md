@@ -311,3 +311,87 @@ Se plantearon las siguientes modificaciones:
 - El mensaje tras llenar ambos campos, username y password:
 
   ![Mod 3](image/Taller3-Solucion/2_4_Mod3.png)
+
+---
+
+---
+
+## Más visualizaciones e interacciones
+
+---
+
+### 1.
+
+Describa el layout de `app3.py`
+
+<br>
+
+**R/**
+
+El layout de la aplicación se compone de un div contenedor con únicamente dos subelementos:
+
+- `Graph`: Este elemento es una gráfica que en principio esta vacía pero que tras lo inputs ya se llena.
+- `Slider`: Este elemento es un slider que permite seleccionar un elemento de entre una lista de valores. En este caso la lista del Slider son los años que están presentes en el DataFrame, el mínimo valor es el año mínimo en el DataFrame, el máximo valor es el año máximo presente en el DataFrame y el slider inicia por default ubicado en el menor año.
+
+![Layout](image/Taller3-Solucion/3_1_Layout.png)
+
+El layout una vez ejecutada la aplicación se ve de la siguiente forma
+
+![Ejecucion](image/Taller3-Solucion/3_1_Ejecucion.png)
+
+---
+
+### 2.
+
+Describa la función `update_figure`
+
+```py
+@app.callback(
+    Output('graph-with-slider', 'figure'),
+    [Input('year-slider', 'value')])
+def update_figure(selected_year):
+    filtered_df = df[df.year == selected_year]
+
+    fig = px.scatter(filtered_df, x="gdpPercap", y="lifeExp",
+                     size="pop", color="continent", hover_name="country",
+                     log_x=True, size_max=55,
+                     labels={
+                         "pop": "Population",
+                         "gdpPercap": "GDP per cápita",
+                         "lifeExp": "Life Expectancy",
+                         "continent": "Continent"
+                     },
+                     title=f"Life expectancy vs. GDP per cápita across the years {selected_year}")
+
+    fig.update_layout(transition_duration=500)
+
+    return fig
+```
+
+<br>
+
+**R/**
+
+La función recibe un parámetro con el año seleccionado en el Slider, posteriormente filtra el DataFrame para tener únicamente los valores de los países en ese año particular seleccionado en el Slider.
+
+Una vez se filtró el DataFrame se procede a realizar un grafica de dispersión (_scatter_) con los datos filtrados donde:
+
+- `x="gdpPercap"`: En el eje X se ubica el Producto Interno Bruto del país, que corresponde a la columna `gdpPercap` del DataFrame.
+- `y="lifeExp"`: En el eje Y se grafica la Expectativa de Vida, que corresponde a la columna `lifeExp` del DataFrame.
+- `size="pop"`: No todos los puntos son del mismo tamaño, sino que el tamaño es proporcional a la población del país en el año seleccionado, que corresponde a la columna `pop` del DataFrame.
+- `color="continent"`: Cada uno de los puntos tiene un color diferente dependiendo del continente al que pertenece el país, que corresponde a la columna `continent` del DataFrame.
+- `hover_name="country"`: Si se enfoca el mouse sobre uno de los puntos se mostrará la información de dicho punto, sin embargo, con este parámetro podemos destacar uno de los atributos, en este caso el nombre del país, que corresponde a la columna `country` del DataFrame.
+- `log_x=True`: Convertimos los datos del eje X a escala logarítmica para facilitar la comparación.
+- `size_max=55`: Es posible delimitar el tamaño máximo que pueden tener los puntos del diagrama de dispersión, en este caso el país de mayor población tendrá el punto más grande.
+- `labels={}`: Podemos cambiar el nombre con el que se muestran las columnas del DataFrame.
+- `title=""`: Agregamos un título al gráfico.
+
+---
+
+### 3.
+
+Realice una nueva visualización de interés.
+
+<br>
+
+**R/**
