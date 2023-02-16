@@ -10,7 +10,6 @@ import pandas as pd
 # Read the Data
 df = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
-print(df.columns)
 
 # Aggregate the data
 filtered_df = df.groupby(['year', 'continent']).agg(
