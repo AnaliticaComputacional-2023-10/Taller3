@@ -78,7 +78,7 @@ Ejecute la aplicación e incluya un pantallazo del código en ejecución y la ap
 <br>
 
 **R/**
-![Imagen Ejecución](image/Taller3-Solucion/1_3.png)
+![Imagen Ejecución](image/Taller3-Solucion/1_5.png)
 
 ---
 
@@ -109,12 +109,12 @@ Se crea en una variable un objeto que posteriormente será agregado a la aplicac
 - `y`: El nombre de la columna del DataFrame recibido en `data_frame` cuyos valores serán usados para colocar marcas a lo largo del eje y del gráfico.
 - `color`: El nombre de la columna del DataFrame recibido en `data_frame` cuyos valores serán usados para asignar colores a las marcas. Generalmente se usa para variables categóricas que distingan los datos.
 - `barmode`: Un `str` que puede recibir los valores `'relative'`, `'overlay'`, `'group'`.
-  - `'relative'`: las barras para las categorías son apiladas o _stacked_ una encima de la otra.  
-    ![Relative](image/Taller3-Solucion/1_4_Relative.png)
+  - `'relative'`: las barras para las categorías son apiladas o _stacked_ una encima de la otra.
+    ![Relative](image/Taller3-Solucion/1_6_Relative.png)
   - `'overlay'`: las barras son dibujadas una encima de la otra, se solapan.
-    ![Overlay](image/Taller3-Solucion/1_4_Overlay.png)
+    ![Overlay](image/Taller3-Solucion/1_6_Overlay.png)
   - `'group'`: las barras son dibujadas al lado de la otra para distinguir las categorías.
-    ![Group](image/Taller3-Solucion/1_4_Group.png)
+    ![Group](image/Taller3-Solucion/1_6_Group.png)
 
 [Plotly Express](https://plotly.com/python-api-reference/generated/plotly.express.bar.html)
 [Plotly Bar charts](https://plotly.com/python/bar-charts/)
@@ -164,7 +164,7 @@ Se crea en una variable un objeto que posteriormente será agregado a la aplicac
 
   Un gráfico que representa este código se meustra a continuación
 
-  ![Contenedor](image/Taller3-Solucion/1_5_Contenedor.png)
+  ![Contenedor](image/Taller3-Solucion/1_7_Contenedor.png)
 
 ---
 
@@ -200,9 +200,9 @@ df = pd.DataFrame(
 |   9   |   Gustavo Petro    |   Guaviare   |
 |   5   | Rodolfo Hernández  |   Guaviare   |
 
-Y la aplicación con los nuevos datos es de la siguiente forma:
+Y la aplicación con los nuevos datos en el archivo `app1_mod.py` se ve de la siguiente forma:
 
-![Nuevo Dashboard](image/Taller3-Solucion/1_6_Nuevo.png)
+![Nuevo Dashboard](image/Taller3-Solucion/1_8_Nuevo.png)
 
 ---
 
@@ -242,11 +242,11 @@ El layout es un elemento Div contenedor que posee a cuatro subelementos
 - _Div_: El último elemento es otro div el cual no tiene subelementos ni texto inicial, sin embargo, se le asigna un id para poder ser modificado proximamente por otro elemento.
 
 El layout se puede ver de la siguiente forma elemento por elemento:
-![Layout](image/Taller3-Solucion/2_1_Layout.png)
+![Layout](image/Taller3-Solucion/2_3_Layout.png)
 
 Ya ejecutada la aplicación se observa:
 
-![App](image/Taller3-Solucion/2_1_App.png)
+![App](image/Taller3-Solucion/2_3_App.png)
 
 ---
 
@@ -299,21 +299,21 @@ Modifique la aplicación agregando texto personalizado.
 
 **R/**
 
-Se plantearon las siguientes modificaciones:
+Se plantearon las siguientes modificaciones en el archvio `app2_mod.py`:
 
 - Una página que permita registrar un usuario con un username y una password
 
 - La aplicación inicial y el mensaje default:
 
-  ![Mod 1](image/Taller3-Solucion/2_4_Mod1.png)
+  ![Mod 1](image/Taller3-Solucion/2_7_Mod1.png)
 
 - El mensaje tras llenar solamente el username
 
-  ![Mod 2](image/Taller3-Solucion/2_4_Mod2.png)
+  ![Mod 2](image/Taller3-Solucion/2_7_Mod2.png)
 
 - El mensaje tras llenar ambos campos, username y password:
 
-  ![Mod 3](image/Taller3-Solucion/2_4_Mod3.png)
+  ![Mod 3](image/Taller3-Solucion/2_7_Mod3.png)
 
 ---
 
@@ -336,11 +336,11 @@ El layout de la aplicación se compone de un div contenedor con únicamente dos 
 - `Graph`: Este elemento es una gráfica que en principio esta vacía pero que tras lo inputs ya se llena.
 - `Slider`: Este elemento es un slider que permite seleccionar un elemento de entre una lista de valores. En este caso la lista del Slider son los años que están presentes en el DataFrame, el mínimo valor es el año mínimo en el DataFrame, el máximo valor es el año máximo presente en el DataFrame y el slider inicia por default ubicado en el menor año.
 
-![Layout](image/Taller3-Solucion/3_1_Layout.png)
+![Layout](image/Taller3-Solucion/3_4_Layout.png)
 
 El layout una vez ejecutada la aplicación se ve de la siguiente forma
 
-![Ejecucion](image/Taller3-Solucion/3_1_Ejecucion.png)
+![Ejecucion](image/Taller3-Solucion/3_4_Ejecucion.png)
 
 ---
 
@@ -415,3 +415,17 @@ Realice una nueva visualización de interés.
 <br>
 
 **R/**
+
+La nueva visualización grafica la media de la Expectativa de Vida de cada continente contra el año de medida.
+
+Para esto es necesario crear un nuevo DataFrame a partir del original donde se pueda agregar la información de los países a solo continentes.
+
+La aplicación se ve así:
+
+![Mod 3 1](image/Taller3-Solucion/3_10_Mod3_1.png)
+
+Además, se agrego un slider para poder visualizar individualmente cada continente, donde se muestra la Expectativa de Vida media para ese continente junto con un rango a partir de la desviación estándar en la expectativa de vida de los países del continente. Para mayor claridad se muestra a continuación:
+
+![Mod 3 2](image/Taller3-Solucion/3_10_Mod3_2.png)
+
+La línea de en medio un poco más gruesa y oscura representa la Expectativa de Vida media. Los rangos que se observan representan la desviación estándar de la media.

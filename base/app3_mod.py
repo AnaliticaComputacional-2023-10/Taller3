@@ -59,44 +59,40 @@ app.layout = html.Div([
     [Input('continent-slider', 'value')])
 def update_figure(selected_continent):
 
+    # Grafico con todos los continentes
     if marks[selected_continent] == 'Todos':
 
+        # Crear nuevamente el objeto
         fig = go.Figure()
 
         for continent in continents:
             final_df = filtered_df[filtered_df.continent ==
                                    continent]
 
+            # Agregar la linea de cada continente
             fig.add_trace(go.Scatter(
                 x=final_df["year"],
                 y=final_df["meanLifeExp"],
                 mode='lines',
-                # name='mean'+continent,
                 name=continent,
                 line=dict(color=colors[continent], width=2),
             ))
 
+        fig.update_layout(
+            title_text='Mean Life Expectancy by Continent Over Time',
+            legend_title_text="Continents",
+            xaxis=dict(title='Year'),
+            yaxis=dict(title='Years'),
+        )
+
         return fig
 
+    # Gráfico individual por continente
     else:
         final_df = filtered_df[filtered_df.continent ==
                                marks[selected_continent]]
 
         fig = go.Figure()
-
-        for continent in continents:
-            break
-            final_df = filtered_df[filtered_df.continent ==
-                                   continent]
-
-            fig.add_trace(go.Scatter(
-                x=final_df["year"],
-                y=final_df["meanLifeExp"],
-                mode='lines',
-                name='mean'+continent,
-                line=dict(color=colors[continent], width=2),
-                opacity=0.3
-            ))
 
         fig.add_trace(go.Scatter(
             x=final_df["year"],
@@ -104,7 +100,7 @@ def update_figure(selected_continent):
             # y=final_df["minLifeExp"],
             mode='lines',
             name='std_min',
-            opacity=0.3,
+            opacity=0.5,
             line=dict(color=colors[marks[selected_continent]], width=0.5),
             showlegend=False
         ))
@@ -116,6 +112,7 @@ def update_figure(selected_continent):
             name='mean',
             fill='tonexty',
             line=dict(color=colors[marks[selected_continent]], width=2),
+            showlegend=False
         ))
 
         fig.add_trace(go.Scatter(
@@ -124,11 +121,17 @@ def update_figure(selected_continent):
             # y=final_df["maxLifeExp"],
             mode='lines',
             name='std_max',
-            opacity=0.3,
+            opacity=0.5,
             fill='tonexty',
             line=dict(color=colors[marks[selected_continent]], width=0.5),
             showlegend=False
         ))
+
+        fig.update_layout(
+            title_text=f'Mean Life Expectancy in {marks[selected_continent]} Over Time\nWith Range of Standar Deviation',
+            xaxis=dict(title='Year'),
+            yaxis=dict(title='Years'),
+        )
 
         return fig
 
