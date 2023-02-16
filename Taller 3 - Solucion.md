@@ -19,7 +19,7 @@
 
 ---
 
-### 1.
+### 2.
 
 ¿Cómo se crea el objeto `app` en _Dash_?
 
@@ -27,7 +27,7 @@
 
 **R/**
 
-Importamos la librería _Dash_ y posteriormente creamos un nuevo objeto de tipo Dash que pertenece a dicha librería. Dentro de los parámetros necesarios se encuentra `name=__name__` que es el valor que hace fácil para Dash encontrar ciertos elementos estáticos necesarios [1](https://www.angela1c.com/projects/dash/plotly_intro/)
+Importamos la librería _Dash_ y posteriormente creamos un nuevo objeto de tipo Dash que pertenece a dicha librería. Dentro de los parámetros necesarios se encuentra `name=__name__` que es el valor que hace fácil para Dash encontrar ciertos elementos estáticos necesarios. ([Info](https://www.angela1c.com/projects/dash/plotly_intro/))
 
 ```py
 import dash
@@ -40,7 +40,7 @@ app = dash.Dash(name=__name__, external_stylesheets=['url'])
 
 ---
 
-### 2.
+### 3.
 
 Describa el conjunto de datos del Dataframe
 
@@ -71,7 +71,7 @@ Los datos corresponden a un registro con tres columnas, Fiebre, Casos y Diagnós
 
 ---
 
-### 3.
+### 5.
 
 Ejecute la aplicación e incluya un pantallazo del código en ejecución y la aplicación siendo ejecutada en el navegador
 
@@ -82,7 +82,7 @@ Ejecute la aplicación e incluya un pantallazo del código en ejecución y la ap
 
 ---
 
-### 4.
+### 6.
 
 Considerando la aplicación describa qué hace el comando
 
@@ -116,9 +116,12 @@ Se crea en una variable un objeto que posteriormente será agregado a la aplicac
   - `'group'`: las barras son dibujadas al lado de la otra para distinguir las categorías.
     ![Group](image/Taller3-Solucion/1_4_Group.png)
 
+[Plotly Express](https://plotly.com/python-api-reference/generated/plotly.express.bar.html)
+[Plotly Bar charts](https://plotly.com/python/bar-charts/)
+
 ---
 
-### 5.
+### 7.
 
 - Describa que hace el siguiente código
 
@@ -165,7 +168,7 @@ Se crea en una variable un objeto que posteriormente será agregado a la aplicac
 
 ---
 
-### 6.
+### 8.
 
 Realice cambios en los datos para obtener una nueva versión del tablero con datos de su elección.
 
@@ -209,7 +212,7 @@ Y la aplicación con los nuevos datos es de la siguiente forma:
 
 ---
 
-### 1.
+### 3.
 
 Describa el layout de la aplicación del archivo `app2.py`
 
@@ -247,7 +250,7 @@ Ya ejecutada la aplicación se observa:
 
 ---
 
-### 2.
+### 5.
 
 Describa qué hace la función `update_output_div`
 
@@ -269,7 +272,7 @@ Apenas se ejecuta la aplicación se ejecuta la función como si hubiera un cambi
 
 ---
 
-### 3.
+### 6.
 
 Describa qué hace el decorador `app.callback`
 
@@ -284,11 +287,11 @@ Describa qué hace el decorador `app.callback`
 
 **R/**
 
-con este decorador le estamos diciendo a _Dash_ que llame esta función cuando cambie el valor del input asociado por medio del `component_id='my-input'` (el Input en el Div para nuestra aplicación) y actualice el componente output asociado con el `component_id='my-output'` (el Div vacío en nuestra aplicación).
+Con este decorador le estamos diciendo a _Dash_ que llame esta función cuando cambie el valor del input asociado por medio del `component_id='my-input'` (el Input en el Div para nuestra aplicación) y actualice el componente output asociado con el `component_id='my-output'` (el Div vacío en nuestra aplicación).
 
 ---
 
-### 4.
+### 7.
 
 Modifique la aplicación agregando texto personalizado.
 
@@ -320,7 +323,7 @@ Se plantearon las siguientes modificaciones:
 
 ---
 
-### 1.
+### 4.
 
 Describa el layout de `app3.py`
 
@@ -341,7 +344,7 @@ El layout una vez ejecutada la aplicación se ve de la siguiente forma
 
 ---
 
-### 2.
+### 5.
 
 Describa la función `update_figure`
 
@@ -388,7 +391,24 @@ Una vez se filtró el DataFrame se procede a realizar un grafica de dispersión 
 
 ---
 
-### 3.
+### 6.
+
+Describa qué hace el decorador asociado a la función
+
+```py
+@app.callback(
+    Output('graph-with-slider', 'figure'),
+    [Input('year-slider', 'value')])
+def update_figure(selected_year):
+
+    return fig
+```
+
+Con este decorador le estamos diciendo a _Dash_ que llame esta función cuando cambie el valor en la lista del segundo parametro, los inputs. Aunque es una lista, en este caso solo hay un input asociado, el cual hace referencia al objeto html con id `year_slider` y se llama al valor de ese objeto para ser enviado como parámetro a la función asociada al decorador. Por otro lado, el primer parámetro (Output) es un objeto al cual le asociamos el id del objeto html que se modificará, el valor que retorne la función asociada al decorador será lo que tendrá el Output asociado.
+
+---
+
+### 10.
 
 Realice una nueva visualización de interés.
 

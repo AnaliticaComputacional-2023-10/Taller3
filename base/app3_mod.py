@@ -7,11 +7,12 @@ import plotly.graph_objects as go
 
 import pandas as pd
 
+# Read the Data
 df = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 print(df.columns)
 
-# Create the agg data
+# Aggregate the data
 filtered_df = df.groupby(['year', 'continent']).agg(
     meanLifeExp=('lifeExp', 'mean'), maxLifeExp=('lifeExp', 'max'), minLifeExp=('lifeExp', 'min'), stdLifeExp=('lifeExp', 'std')).reset_index()
 
@@ -20,13 +21,15 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
-# Variables
+# Variables needed
 continents = df["continent"].unique()
+
 marks = {0: 'Todos'}
 cont = 1
 for continent in continents:
     marks[cont] = continent
     cont += 1
+
 colors = {
     'Asia': 'LightSkyblue',
     'Europe': 'LightSalmon',
@@ -57,6 +60,7 @@ app.layout = html.Div([
 def update_figure(selected_continent):
 
     if marks[selected_continent] == 'Todos':
+
         fig = go.Figure()
 
         for continent in continents:
@@ -67,7 +71,8 @@ def update_figure(selected_continent):
                 x=final_df["year"],
                 y=final_df["meanLifeExp"],
                 mode='lines',
-                name='mean'+continent,
+                # name='mean'+continent,
+                name=continent,
                 line=dict(color=colors[continent], width=2),
             ))
 
@@ -79,13 +84,27 @@ def update_figure(selected_continent):
 
         fig = go.Figure()
 
+        for continent in continents:
+            break
+            final_df = filtered_df[filtered_df.continent ==
+                                   continent]
+
+            fig.add_trace(go.Scatter(
+                x=final_df["year"],
+                y=final_df["meanLifeExp"],
+                mode='lines',
+                name='mean'+continent,
+                line=dict(color=colors[continent], width=2),
+                opacity=0.3
+            ))
+
         fig.add_trace(go.Scatter(
             x=final_df["year"],
             y=final_df["meanLifeExp"]-final_df["stdLifeExp"],
             # y=final_df["minLifeExp"],
             mode='lines',
             name='std_min',
-            opacity=0.75,
+            opacity=0.3,
             line=dict(color=colors[marks[selected_continent]], width=0.5),
             showlegend=False
         ))
@@ -105,7 +124,7 @@ def update_figure(selected_continent):
             # y=final_df["maxLifeExp"],
             mode='lines',
             name='std_max',
-            opacity=0.75,
+            opacity=0.3,
             fill='tonexty',
             line=dict(color=colors[marks[selected_continent]], width=0.5),
             showlegend=False
